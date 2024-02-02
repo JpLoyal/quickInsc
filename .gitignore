@@ -1,0 +1,10 @@
+
+venv/
+db.sqlite3
+.env
+.idea
+.wttd
+*.sqlite3
+*pyc
+__pycache__
+staticfiles
