@@ -3,5 +3,5 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def teste(request):
-    return HttpResponse('Teste')
+def subscription(request):
+    return render(request, 'subscription.html')
