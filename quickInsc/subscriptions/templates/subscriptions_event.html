@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'subscriptions/css/subscriptions_event.css' %}">
+</head>
+<body>
+
+<form action="." method="POST">
+
+    {% csrf_token %}
+
+    {{ form }}
+
+    <button type="submit">Inscrever-se</button>
+
+</form>
+
+</body>
+</html>

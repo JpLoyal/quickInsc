@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from quickInsc.core.views import home
-from quickInsc.subscriptions.views import subscription, subscription_sucess
+from quickInsc.subscriptions.views import SubscriptionPerson, SubscriptionEvent, SubscriptionSucess
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path('subscriptions/', subscription),
-    path('subscriptions/sucess/', subscription_sucess)
+    path('subscriptions/person/', SubscriptionPerson.as_view()),
+    path('subscriptions/event/', SubscriptionEvent.as_view()),
+    path('subscriptions/sucess/', SubscriptionSucess.as_view()),
 ]

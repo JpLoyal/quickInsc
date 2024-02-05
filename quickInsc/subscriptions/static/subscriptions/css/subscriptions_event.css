@@ -55,3 +55,12 @@ button:hover {
     background-color: #0056b3;
 }
 
+#id_time_starts, #id_time_ends {
+    margin-bottom: 16px;
+    padding: 3px;
+}
+
+textarea {
+    max-width: 100%;
+    min-width: 100%;
+}

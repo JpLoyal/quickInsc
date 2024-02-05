@@ -1,12 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quickInsc</title>
+    <link rel="stylesheet" href="{% static 'core/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Seja Bem-Vindo ao QuickInsc.</h1>
-    <a href="./subscriptions">Realizar Inscrição</a>
+
+    <section class="options">   
+
+        <div class="options__div">
+            <h1 class="options__div__banner">O que você deseja?</h1>
+            <a href="./subscriptions/event" class="options__div__option">Cadastrar um Evento</a>
+            <a href="./subscriptions/person" class="options__div__option">Cadastrar-se em um Evento</a>
+        </div>
+
+    </section>
+
 </body>
 </html>
