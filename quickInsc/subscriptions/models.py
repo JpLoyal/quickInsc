@@ -13,6 +13,9 @@ class Event(models.Model):
     address = models.CharField(verbose_name='Endereço', max_length=255, default='default')
     min_age = models.IntegerField(verbose_name='Idade Mínima')
 
+    def __str__(self):
+        return self.name
+
 
 class Participant(models.Model):
     name = models.CharField(max_length=255, verbose_name='Nome')
@@ -21,5 +24,7 @@ class Participant(models.Model):
     gender = models.CharField(max_length=1, verbose_name='Sexo')
     email = models.EmailField(max_length=255, verbose_name='E-mail')
     phone = models.CharField(max_length=20, verbose_name='Telefone')
-
     events = models.ManyToManyField(Event)
+
+    def __str__(self):
+        return self.name

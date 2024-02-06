@@ -1,6 +1,9 @@
 from django import forms
-from django.core.exceptions import ValidationError
 from datetime import time
+
+from .models import Event
+
+from .forms_validators import validate_age, valida_cpf
 
 
 class ParticipantForm(forms.Form):
@@ -11,19 +14,13 @@ class ParticipantForm(forms.Form):
     ]
 
 
-    ### Validadores 
-    
-    def validate_age(value):
-        if not value >= 18:
-            raise ValidationError("A idade deve ser maior que 18 anos.")
-
-
     name = forms.CharField(label='Nome', max_length=100)
     age = forms.IntegerField(label='Idade', required=False, validators=[validate_age])
-    CPF = forms.CharField(label='CPF')
+    CPF = forms.CharField(label='CPF', validators=[valida_cpf])
     gender = forms.ChoiceField(label='Sexo', choices=SEXO_CHOICES)
     email = forms.EmailField(label='Email')
     phone = forms.CharField(label='Telefone')
+    events = forms.ModelChoiceField(queryset=Event.objects.all(), label='Evento')
 
 
 class EventForm(forms.Form):
@@ -36,8 +33,8 @@ class EventForm(forms.Form):
     name = forms.CharField(label='Nome do Evento')
     attractions = forms.CharField(label='Atrações')
     description = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 40}))
-    date = forms.DateField(label='Data')
+    min_age = forms.IntegerField(label='Idade Mínima Permitida')
+    date = forms.DateField(label='Data do Evento', widget=forms.SelectDateWidget())
     time_starts = forms.TimeField(label='Hora de Início', widget=forms.Select(choices=HOUR_CHOICES))
     time_ends = forms.TimeField(label='Hora de Término', widget=forms.Select(choices=HOUR_CHOICES))
     address = forms.CharField(label='Endereço')
-    min_age = forms.IntegerField(label='Idade Mínima Permitida')

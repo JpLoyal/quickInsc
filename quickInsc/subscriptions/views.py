@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 from .forms import ParticipantForm, EventForm
+from .models import Event, Participant
 
 # Create your views here.
 
@@ -15,9 +16,23 @@ class SubscriptionPerson(View):
         if not form.is_valid():
             return render(self.request, 'subscriptions_person.html', {'form': form})
         
-        # caso válido, criar um no banco de dados
+        # Cria registro no banco de dados
+
+        participant = Participant.objects.create(
+            name=form.cleaned_data['name'],
+            age=form.cleaned_data['age'],
+            CPF=form.cleaned_data['CPF'],
+            gender=form.cleaned_data['gender'],
+            email=form.cleaned_data['email'],
+            phone=form.cleaned_data['phone'],
+        )
+
+        print(participant)
+        
+        participant.events.add(form.cleaned_data['events'])
+
         # redireciona para página de sucesso
-        return HttpResponseRedirect('sucess/')
+        return HttpResponseRedirect('/subscriptions/sucess/')
     
     def get(self, *args, **kwargs):
         form = ParticipantForm()
@@ -31,10 +46,12 @@ class SubscriptionEvent(View):
 
         if not form.is_valid():
             return render(self.request, 'subscriptions_event.html', {'form': form})
+
+        # Cria registro no banco de dados
+        Event.objects.create(**form.cleaned_data)
         
-        # caso válido, criar um no banco de dados
         # redireciona para página de sucesso
-        return HttpResponseRedirect('sucess/')
+        return HttpResponseRedirect('/subscriptions/sucess/')
     
     def get(self, *args, **kwargs):
         form = EventForm()
