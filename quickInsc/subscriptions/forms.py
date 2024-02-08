@@ -32,7 +32,7 @@ class EventForm(forms.Form):
 
     name = forms.CharField(label='Nome do Evento')
     attractions = forms.CharField(label='Atrações')
-    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 40}))
+    description = forms.CharField(label='Descrição', widget=forms.Textarea(attrs={'rows': 5, 'cols': 40}))
     min_age = forms.IntegerField(label='Idade Mínima Permitida')
     date = forms.DateField(label='Data do Evento', widget=forms.SelectDateWidget())
     time_starts = forms.TimeField(label='Hora de Início', widget=forms.Select(choices=HOUR_CHOICES))

@@ -16,6 +16,10 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Evento'
+        verbose_name_plural = 'Eventos'
+
 
 class Participant(models.Model):
     name = models.CharField(max_length=255, verbose_name='Nome')
@@ -28,3 +32,8 @@ class Participant(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+    class Meta:
+        verbose_name = 'Participante'
+        verbose_name_plural = 'Participantes'

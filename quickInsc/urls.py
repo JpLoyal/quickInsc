@@ -15,14 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from quickInsc.core.views import home
-from quickInsc.subscriptions.views import SubscriptionPerson, SubscriptionEvent, SubscriptionSucess
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path('subscriptions/person/', SubscriptionPerson.as_view()),
-    path('subscriptions/event/', SubscriptionEvent.as_view()),
-    path('subscriptions/sucess/', SubscriptionSucess.as_view()),
+    path('subscriptions/', include('quickInsc.subscriptions.urls')),
 ]

@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento Criado com Sucesso!</title>
+    <link rel="stylesheet" href="{% static 'core/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'subscriptions/css/subscriptions_event_sucess.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class='banner'>Obrigado por criar um evento!</h1>
+    <p class="detail_here">Aqui estão os detalhes do evento:</p>
+    <ul class="detail_list">
+        <li class="detail_list__item"><strong>Nome do Evento:</strong> {{ evento.name }}</li>
+        <li class="detail_list__item"><strong>Atrações:</strong> {{ evento.attractions }}</li>
+        <li class="detail_list__item"><strong>Descrição:</strong> {{ evento.description }}</li>
+        <li class="detail_list__item"><strong>Data:</strong> {{ evento.date }}</li>
+        <li class="detail_list__item"><strong>Hora de Início:</strong> {{ evento.time_starts }}</li>
+        <li class="detail_list__item"><strong>Hora de Término:</strong> {{ evento.time_ends }}</li>
+        <li class="detail_list__item"><strong>Endereço:</strong> {{ evento.address }}</li>
+        <li class="detail_list__item"><strong>Idade Mínima:</strong> {{ evento.min_age }}</li>
+    </ul>
+</body>
+</html>
